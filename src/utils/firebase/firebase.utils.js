@@ -4,7 +4,8 @@ import {
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from 'firebase/auth';
 
 import {
@@ -56,7 +57,7 @@ export const createUserDocumentFromAuth = async (userAuth,additionalInformation 
         createdAt,
         ...additionalInformation,
       });
-    } catch (error) { 
+    } catch (error) {
       console.log('error creating the user', error.message );
     }
 
@@ -77,4 +78,11 @@ export const createAuthUserWithEmailAndPassword = async(email, password) => {
   if(!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth,email,password);
+}
+
+
+export const signInAuthUserWithEmailAndPassword = async(email, password) => {
+  if(!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth,email,password);
 }
