@@ -5,14 +5,22 @@ import App from './App';
 import './index.scss';
 import {UserProvider} from './context/context.jsx'
 import reportWebVitals from './reportWebVitals';
+import {ProductProvider} from './context/products.context';
+import {CartProvider} from './context/cart.context';
 
 ReactDOM.render(
+
+
   <React.StrictMode>
-  <BrowserRouter>
-  <UserProvider>
-       <App />
-  </UserProvider>
-  </BrowserRouter>
+   <BrowserRouter>
+      <UserProvider>
+        <ProductProvider>
+         <CartProvider>
+         <App />
+         </CartProvider>
+         </ProductProvider>
+      </UserProvider>
+   </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
